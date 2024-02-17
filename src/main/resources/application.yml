@@ -27,4 +27,16 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-    database-platform: org.hibernate.dialect.H2Dialect
+  #    database-platform: org.hibernate.dialect.H2Dialect
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      #      bootstrap-servers: localhost:9092
+      group-id: ted-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      #      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

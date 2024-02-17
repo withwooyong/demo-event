@@ -1,7 +1,7 @@
 package com.example.demoevent.service;
 
 import com.example.demoevent.dto.MemberDto;
-import com.example.demoevent.event.SavedMemberEvent;
+import com.example.demoevent.event.MemberEvent;
 import com.example.demoevent.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -22,7 +22,7 @@ public class MemberService {
     public void signUp(MemberDto memberDto) {
 
         log.info("before publishEvent() method.");
-        eventPublisher.publishEvent(new SavedMemberEvent(memberDto));
+        eventPublisher.publishEvent(new MemberEvent(memberDto));
         log.info("after publishEvent() method.");
 
         if (memberDto.getName().equals("master")) {

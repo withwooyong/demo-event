@@ -17,6 +17,12 @@ public class OrderController {
     @GetMapping("/order/{productName}")
     private void order(@PathVariable String productName) {
         orderService.order(productName);
-        log.info("주문이 완료되었습니다.");
+        log.info("1. 주문이 완료되었습니다.");
+    }
+
+    @GetMapping("/order2/{productName}")
+    private void order2(@PathVariable String productName) {
+        orderService.order2(productName);
+        log.info("2. 주문이 완료되었습니다.");
     }
 }

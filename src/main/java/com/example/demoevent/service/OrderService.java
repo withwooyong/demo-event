@@ -12,10 +12,19 @@ import org.springframework.stereotype.Service;
 public class OrderService {
 
     private final ApplicationEventPublisher publisher;
+    private final PushService pushService;
+    private final MailService mailService;
 
     public void order(String productName) {
         //주문 처리
         log.info(String.format("주문 로직 처리 [상품명 : %s]", productName));
         publisher.publishEvent(new OrderedEvent(productName));
+    }
+
+    public void order2(String productName) {
+        //주문 처리
+        log.info(String.format("주문 로직 처리 [상품명 : %s]", productName));
+        pushService.sendPush(productName);
+        mailService.sendMail(productName);
     }
 }

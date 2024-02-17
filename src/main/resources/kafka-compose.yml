@@ -1,0 +1,19 @@
+# https://9hyuk9.tistory.com/92
+# https://velog.io/@shinmj1207/Apache-Kafka-Docker-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-Spring-boot-Kafka-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0
+version: '3.8'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
