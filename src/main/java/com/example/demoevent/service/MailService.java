@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MailService {
-
     public void sendMail(String productName) {
         log.info(String.format("메일 발송 [상품명 : %s]", productName));
     }

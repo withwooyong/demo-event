@@ -20,7 +20,6 @@ public class MemberService {
 
     @Transactional
     public void signUp(MemberDto memberDto) {
-
         log.info("before publishEvent() method.");
         eventPublisher.publishEvent(new MemberEvent(memberDto));
         log.info("after publishEvent() method.");
